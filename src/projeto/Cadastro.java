@@ -39,6 +39,7 @@ public class Cadastro extends JFrame {
 	protected JTextField textField_3;
 	private JPasswordField passwordField;
 	private JTextField textField;
+	private JTextField textField_4;
 
 	
 	public static void main(String[] args) {
@@ -58,13 +59,16 @@ public class Cadastro extends JFrame {
 		
 		//Conexao con;
 			
-	public Cadastro() { //AO INVÉS DE PASSAR POR PARAMETRO FAZER UMA CLASSE CONTROLE
+	public Cadastro() {
+		setResizable(false);
+		setType(Type.POPUP);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\055-batman.png")); //AO INVÉS DE PASSAR POR PARAMETRO FAZER UMA CLASSE CONTROLE
 		
 		
 		setFont(new Font("Times New Roman", Font.BOLD, 14));
 		setTitle("Cadastro");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 342);
+		setBounds(100, 100, 450, 351);
 		
 		// conexão com o BD
 		//con = new Conexao();
@@ -79,22 +83,22 @@ public class Cadastro extends JFrame {
 		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		lblNome.setBounds(10, 11, 46, 14);
+		lblNome.setBounds(10, 28, 46, 14);
 		contentPane.add(lblNome);
 		
 		JLabel lblEmail = new JLabel("E-mail");
 		lblEmail.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		lblEmail.setBounds(10, 55, 46, 14);
+		lblEmail.setBounds(10, 73, 46, 14);
 		contentPane.add(lblEmail);
 		
 		JLabel lblNewLabel = new JLabel("Cidade");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		lblNewLabel.setBounds(10, 104, 46, 14);
+		lblNewLabel.setBounds(10, 217, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		lblSenha.setBounds(10, 154, 46, 14);
+		lblSenha.setBounds(10, 124, 46, 14);
 		contentPane.add(lblSenha);
 		
 		
@@ -144,7 +148,7 @@ public class Cadastro extends JFrame {
 		
 			
 			
-		btnCadastrar.setBounds(107, 246, 89, 23);
+		btnCadastrar.setBounds(90, 268, 89, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -156,37 +160,47 @@ public class Cadastro extends JFrame {
 			}
 		});
 		btnCancelar.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		btnCancelar.setBounds(272, 246, 89, 23);
+		btnCancelar.setBounds(272, 268, 89, 23);
 		contentPane.add(btnCancelar);
 		
 		setTextField_1(new JTextField());
-		getTextField_1().setBounds(58, 8, 366, 20);
+		getTextField_1().setBounds(58, 25, 366, 20);
 		contentPane.add(getTextField_1());
 		getTextField_1().setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(58, 52, 366, 20);
+		textField_2.setBounds(58, 70, 366, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(58, 101, 191, 20);
+		textField_3.setBounds(60, 214, 191, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(58, 151, 366, 20);
+		passwordField.setBounds(58, 121, 366, 20);
 		contentPane.add(passwordField);
 		
 		JLabel lblEstado = new JLabel("UF");
 		lblEstado.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		lblEstado.setBounds(272, 104, 24, 14);
+		lblEstado.setBounds(267, 217, 24, 14);
 		contentPane.add(lblEstado);
 		
 		textField = new JTextField();
-		textField.setBounds(301, 101, 123, 20);
+		textField.setBounds(301, 214, 123, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Endere\u00E7o");
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(10, 175, 46, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(58, 172, 366, 20);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
 		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNome, lblEmail, lblNewLabel, lblSenha, btnCadastrar, btnCancelar, textField_1, textField_2, textField_3}));
 		
 		}

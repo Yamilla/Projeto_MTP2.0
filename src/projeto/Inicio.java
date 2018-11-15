@@ -21,6 +21,8 @@ import javax.swing.JEditorPane;
 import javax.swing.JSeparator;
 import java.awt.Color;
 import javax.swing.JTextPane;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class Inicio extends JFrame implements ActionListener {
 
@@ -44,19 +46,25 @@ public class Inicio extends JFrame implements ActionListener {
 	JButton btnNewButton = new JButton("Cadastrar");
 	JButton btnNewButton_1 = new JButton("Login");
 	public Inicio() {
+		setBackground(Color.DARK_GRAY);
+		setForeground(new Color(0, 0, 51));
+		setType(Type.POPUP);
+		setFont(new Font("Segoe Script", Font.PLAIN, 12));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\033-super-mario.png"));
 		setTitle("STUDIO GEEK");
 		setResizable(false);
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 535, 429);
+		setBounds(100, 100, 648, 454);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(new Color(0, 0, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		btnNewButton.setBounds(108, 356, 89, 23);
+		btnNewButton.setForeground(new Color(0, 0, 0));
+		btnNewButton.setBounds(154, 366, 109, 38);
 		
 		
-		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		btnNewButton.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -65,17 +73,19 @@ public class Inicio extends JFrame implements ActionListener {
 		contentPane.add(btnNewButton);
 		
 		btnNewButton.addActionListener(this) ;
-		btnNewButton_1.setBounds(344, 356, 89, 23);
+		btnNewButton_1.setBounds(414, 366, 89, 38);
 		btnNewButton_1.addActionListener(this) ;
 			
 		
 		
-		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		btnNewButton_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(10, 0, 499, 360);
-		contentPane.add(lblNewLabel);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\yamil\\Desktop\\GEEK-LOGO.jpg"));
+		lblNewLabel_1.setBounds(0, 0, 632, 415);
+		contentPane.add(lblNewLabel_1);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, btnNewButton, btnNewButton_1, lblNewLabel_1}));
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

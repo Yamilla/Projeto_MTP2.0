@@ -14,6 +14,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class login extends JFrame {
 
@@ -41,8 +45,11 @@ public class login extends JFrame {
 	 * Create the frame.
 	 */
 	public login() {
+		setResizable(false);
+		setTitle("Login");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\009-superman.png"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);		
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 397, 476);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,36 +58,36 @@ public class login extends JFrame {
 		
 		JLabel lblLogin = new JLabel("Login:");
 		lblLogin.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		lblLogin.setBounds(10, 138, 46, 14);
+		lblLogin.setBounds(10, 289, 46, 14);
 		contentPane.add(lblLogin);
 		
 		JLabel lblSenha = new JLabel("Senha:");
 		lblSenha.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		lblSenha.setBounds(10, 179, 46, 14);
+		lblSenha.setBounds(10, 333, 46, 14);
 		contentPane.add(lblSenha);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		textField.setBounds(59, 135, 365, 20);
+		textField.setBounds(56, 286, 297, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		passwordField.setBounds(59, 176, 365, 20);
+		passwordField.setBounds(56, 330, 297, 20);
 		contentPane.add(passwordField);
 		
 		JButton btnNewButton = new JButton("Entrar");
-		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(94, 227, 89, 23);
+		btnNewButton.setBounds(71, 385, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Sair");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(arg0.getSource()==btnNewButton_1) {
@@ -88,7 +95,12 @@ public class login extends JFrame {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(244, 227, 89, 23);
+		btnNewButton_1.setBounds(227, 384, 89, 23);
 		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\yamil\\Desktop\\images.png"));
+		lblNewLabel.setBounds(76, 24, 227, 232);
+		contentPane.add(lblNewLabel);
 	}
 }
