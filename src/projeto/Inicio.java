@@ -101,7 +101,7 @@ public class Inicio extends JFrame implements ActionListener {
 					}
 				}
 			});
-			dispose();
+			
 			
 		}
 		
@@ -118,6 +118,6 @@ public class Inicio extends JFrame implements ActionListener {
 			});		
 			
 		}
-		
+	
 	}
 }

@@ -31,8 +31,6 @@ import java.awt.SystemColor;
 
 public class Cadastro extends JFrame {
 	
-	Conexao conexao;
-
 	private JPanel contentPane;
 	protected JTextField textField_1;
 	protected JTextField textField_2;
@@ -57,21 +55,17 @@ public class Cadastro extends JFrame {
 		});
 	}
 		
-		//Conexao con;
 			
 	public Cadastro() {
 		setResizable(false);
 		setType(Type.POPUP);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\055-batman.png")); //AO INVÉS DE PASSAR POR PARAMETRO FAZER UMA CLASSE CONTROLE
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\055-batman.png"));
 		
 		
 		setFont(new Font("Times New Roman", Font.BOLD, 14));
 		setTitle("Cadastro");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 351);
-		
-		// conexão com o BD
-		//con = new Conexao();
 		
 		
 		contentPane = new JPanel();
@@ -106,21 +100,14 @@ public class Cadastro extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			
-			 Conexao conexao;
 
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(arg0.getSource()==btnCadastrar) {
 				
-				PreparedStatement st;
 				Conexao conexao = new Conexao();
-				conexao.inserir(textField_1.getText(),textField_2.getText(),textField_3.getText(),textField.getText(),passwordField.getText());
-				
-				
-				
-				
-				
-				
+				conexao.inserir(textField_1.getText(),textField_2.getText(),new String(passwordField.getPassword()), textField_4.getText(),textField_3.getText(),textField.getText());			
+							
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -131,13 +118,8 @@ public class Cadastro extends JFrame {
 						}
 					}
 				});
-				
-				dispose();            
+				//dispose();            
 				}    
-				
-				
-		            
-				
 			}
 		});
 		

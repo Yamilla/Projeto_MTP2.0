@@ -1,6 +1,7 @@
 package projeto;
 
 import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,6 +12,9 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
@@ -51,18 +55,19 @@ public class login extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);		
 		setBounds(100, 100, 397, 476);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblLogin = new JLabel("Login:");
-		lblLogin.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblLogin.setFont(new Font("Sitka Small", Font.PLAIN, 12));
 		lblLogin.setBounds(10, 289, 46, 14);
 		contentPane.add(lblLogin);
 		
 		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblSenha.setFont(new Font("Sitka Small", Font.PLAIN, 12));
 		lblSenha.setBounds(10, 333, 46, 14);
 		contentPane.add(lblSenha);
 		
@@ -80,8 +85,31 @@ public class login extends JFrame {
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		btnNewButton.addActionListener(new ActionListener() {
+			
+		//VALIDAÇÃO DO USUÁRIO
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+				Conexao conexao = new Conexao();
+				PreparedStatement st = conexao.conn.prepareStatement("SELECT * FROM pessoa WHERE email = ? AND senha = ?");
+					st.setString(1, textField.getText());
+					st.setString(2, new String (passwordField.getPassword()));
+					ResultSet rs = st.executeQuery();
+					while(rs.next()) {
+						if(rs.getString("email").equals(textField.getText())) {
+							if(rs.getString("senha").equals(new String (passwordField.getPassword()))) {
+								new ListadeProdutos(rs.getInt(3)).setVisible(true);
+								dispose();
+							}
+						}
+					}
+					rs.close();
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
 			}
+			
 		});
 		btnNewButton.setBounds(71, 385, 89, 23);
 		contentPane.add(btnNewButton);

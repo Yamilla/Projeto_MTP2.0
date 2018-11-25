@@ -22,7 +22,7 @@ public class Conexao  {
 	private String senha = "mylla";
 	
 	// variável que guarda a conexão
-	private Connection conn;
+	public Connection conn;
 	
 	/**
 	 * Método construtor.
@@ -94,9 +94,9 @@ public class Conexao  {
 	 * @param nome 
 	 */
 	///////////////////////////////////////////////////////////////////////////////////////
-	public void inserir(String nome, String email, String cidade, String senha, String uf)  {		
+	public void inserir(String nome, String email,String senha, String endereco, String cidade, String uf)  {		
 		try {
-			PreparedStatement d = this.conn.prepareStatement("INSERT INTO pessoa (nome ,email ,cidade ,uf ,senha ) VALUES ( ?, ? , ?, ? , ? )");
+			PreparedStatement d = this.conn.prepareStatement("INSERT INTO pessoa (nome ,email ,senha,endereco,cidade,uf) VALUES ( ?, ? , ?, ? , ?, ? )");
 			//String nome = null;
 			//String email = null;
 			//String cidade = null;
@@ -104,9 +104,11 @@ public class Conexao  {
 			//String senha = null;
 			d.setString(1, nome);
 			d.setString(2,email);
-			d.setString(3,cidade);
-			d.setString(4,uf);
-			d.setString(5,senha);
+			d.setString(3,senha);
+			d.setString(4,endereco);
+			d.setString(5,cidade);
+			d.setString(6,uf);
+			
 			d.executeUpdate();
 			d.close();
 		} catch (SQLException e) {
