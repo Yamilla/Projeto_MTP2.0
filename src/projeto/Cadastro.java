@@ -32,17 +32,15 @@ import java.awt.SystemColor;
 public class Cadastro extends JFrame {
 	
 	private JPanel contentPane;
-	protected JTextField textField_1;
-	protected JTextField textField_2;
+	private JTextField textField_1;
+	private JTextField textField_2;
 	protected JTextField textField_3;
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private JTextField textField_4;
 
-	
+	//TELA DE CADASTRO
 	public static void main(String[] args) {
-		
-	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -53,13 +51,11 @@ public class Cadastro extends JFrame {
 				}
 			}
 		});
-	}
-		
-			
+	}	
 	public Cadastro() {
 		setResizable(false);
 		setType(Type.POPUP);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\055-batman.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\Imagens Projeto MTP\\055-batman.png"));
 		
 		
 		setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -96,15 +92,24 @@ public class Cadastro extends JFrame {
 		contentPane.add(lblSenha);
 		
 		
+		
+		
 		//TRATAMENTO DO BOTÃO CADASTRAR
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
-			
-
 			public void actionPerformed(ActionEvent arg0) {
 				
-				if(arg0.getSource()==btnCadastrar) {
+				//VERIFICAÇÃO DE NULOS
+				if(arg0.getSource()==btnCadastrar){
+				/*	if(textField_2.getText().equals("") ||textField_2.getText().equals(" ")) {
+						JOptionPane.showMessageDialog(null, "Titulo da Janela", "Erro no inserir", JOptionPane.ERROR_MESSAGE);
+					}else {*/
 				
+				if(verificaNulo()==false) {
+					JOptionPane.showMessageDialog(null, "Algum campo não foi preenchido", "Aviso", JOptionPane.ERROR_MESSAGE);
+				}else {
+					
+				// CADASTRO DE NULO
 				Conexao conexao = new Conexao();
 				conexao.inserir(textField_1.getText(),textField_2.getText(),new String(passwordField.getPassword()), textField_4.getText(),textField_3.getText(),textField.getText());			
 							
@@ -118,18 +123,16 @@ public class Cadastro extends JFrame {
 						}
 					}
 				});
-				//dispose();            
-				}    
+				dispose(); 
+				
+					}
+				}
+					
 			}
 		});
-		
-		
-		//Outra coisa
 		btnCadastrar.setForeground(Color.BLACK);
 		btnCadastrar.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		
-			
-			
 		btnCadastrar.setBounds(90, 268, 89, 23);
 		contentPane.add(btnCadastrar);
 		
@@ -187,8 +190,18 @@ public class Cadastro extends JFrame {
 		
 		}
 	
+	//VERIFICAÇÃO DE NULOS
+	public boolean verificaNulo(){
+		boolean t = true;
+		//verificar multiplos espaços
+		if(textField.getText().trim().isEmpty()||textField_1.getText().trim().isEmpty()||textField_2.getText().trim().isEmpty()||textField_3.getText().trim().isEmpty()||textField_4.getText().trim().isEmpty()||new String(passwordField.getPassword()).trim().isEmpty()){
+			t = false;
+			}
+		return t;
+	}
+	
 	public void Cadastro1() {
-			// TODO Auto-generated constructor stub
+			
 		}
 
 	public JTextField getTextField_1() {

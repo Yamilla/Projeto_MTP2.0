@@ -51,7 +51,7 @@ public class login extends JFrame {
 	public login() {
 		setResizable(false);
 		setTitle("Login");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\009-superman.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\Imagens Projeto MTP\\009-superman.png"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);		
 		setBounds(100, 100, 397, 476);
 		contentPane = new JPanel();
@@ -97,7 +97,7 @@ public class login extends JFrame {
 					while(rs.next()) {
 						if(rs.getString("email").equals(textField.getText())) {
 							if(rs.getString("senha").equals(new String (passwordField.getPassword()))) {
-								new ListadeProdutos(rs.getInt(3)).setVisible(true);
+								new ListadeProdutos(rs.getInt(1)).setVisible(true);
 								dispose();
 							}
 						}
@@ -127,7 +127,7 @@ public class login extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\yamil\\Desktop\\images.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\yamil\\Desktop\\Imagens Projeto MTP\\images.png"));
 		lblNewLabel.setBounds(76, 24, 227, 232);
 		contentPane.add(lblNewLabel);
 	}
