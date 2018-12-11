@@ -75,22 +75,22 @@ public class Cadastro extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 12));
+		lblNome.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblNome.setBounds(10, 28, 46, 14);
 		contentPane.add(lblNome);
 		
 		JLabel lblEmail = new JLabel("E-mail");
-		lblEmail.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 12));
+		lblEmail.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblEmail.setBounds(10, 73, 46, 14);
 		contentPane.add(lblEmail);
 		
 		JLabel lblNewLabel = new JLabel("Cidade");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 12));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblNewLabel.setBounds(10, 217, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 12));
+		lblSenha.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblSenha.setBounds(10, 124, 46, 14);
 		contentPane.add(lblSenha);
 		
@@ -157,40 +157,40 @@ public class Cadastro extends JFrame {
 		getTextField_1().setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		textField_2.setBounds(58, 70, 366, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		textField_3.setBounds(60, 214, 274, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		passwordField.setBounds(58, 121, 366, 20);
 		contentPane.add(passwordField);
 		
 		JLabel lblEstado = new JLabel("UF");
-		lblEstado.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 12));
+		lblEstado.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblEstado.setBounds(344, 217, 24, 14);
 		contentPane.add(lblEstado);
 		
 		textField = new JTextField();
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		textField.setBounds(378, 214, 46, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Endere\u00E7o");
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 12));
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblNewLabel_1.setBounds(10, 172, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		textField_4 = new JTextField();
-		textField_4.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField_4.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		textField_4.setBounds(58, 172, 366, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
@@ -218,7 +218,7 @@ public class Cadastro extends JFrame {
 
 	public void setTextField_1(JTextField textField_1) {
 		this.textField_1 = textField_1;
-		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 	}
 	}
 

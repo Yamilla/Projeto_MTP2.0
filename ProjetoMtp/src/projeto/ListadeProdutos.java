@@ -25,7 +25,8 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import java.awt.Scrollbar;
-import java.awt.GridLayout;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class ListadeProdutos extends JFrame {
 
@@ -37,58 +38,83 @@ public class ListadeProdutos extends JFrame {
 	}
 
 	public ListadeProdutos(int idpessoa) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\010-star-trek.png"));
 		setResizable(false);
 		setTitle("Lista de Produtos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 993, 623);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(0, 3, 0, 0));
-		
-		JLabel lblNewLabel_1 = new JLabel("foto");
-		contentPane.add(lblNewLabel_1);
+		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("nome");
+		lblNewLabel.setBounds(91, 11, 99, 21);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton_1 = new JButton("Carrinho ");
-		btnNewButton_1.setBackground(Color.WHITE);
-		contentPane.add(btnNewButton_1);
-		
-		JLabel label = new JLabel("");
-		contentPane.add(label);
+		JLabel lblNewLabel_1 = new JLabel("foto");
+		lblNewLabel_1.setBounds(10, 11, 71, 76);
+		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Atualizar dados");
+		btnNewButton.addActionListener(new ActionListener() {
+		
+			// tratamento do botao atualizar dados
+			public void actionPerformed(ActionEvent arg0) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						AtualizacaoDeDados frame = new AtualizacaoDeDados();
+						frame.setVisible(true);
+
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+							dispose ();
+							}
+					});
+			}
+		});
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 9));
+		btnNewButton.setBounds(91, 43, 106, 23);
 		contentPane.add(btnNewButton);
 		
-		JLabel label_1 = new JLabel("");
-		contentPane.add(label_1);
-		
-		JLabel label_2 = new JLabel("");
-		contentPane.add(label_2);
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+								Carrinho frame = new Carrinho();
+								frame.setVisible(true);
+
+									} catch (Exception e) {
+										e.printStackTrace();
+									}
+									dispose ();
+									}
+							});
+			}
+		});
+		btnNewButton_1.setForeground(Color.WHITE);
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\yamil\\Desktop\\shopping_basket.png"));
+		btnNewButton_1.setBackground(Color.WHITE);
+		btnNewButton_1.setBounds(850, 11, 99, 98);
+		contentPane.add(btnNewButton_1);
 		
 		JButton btnSair = new JButton("Sair");
 		btnSair.setBackground(Color.WHITE);
 		btnSair.setFont(new Font("Times New Roman", Font.BOLD, 11));
+		btnSair.setBounds(101, 77, 89, 23);
 		contentPane.add(btnSair);
 		
-		JLabel label_3 = new JLabel("");
-		contentPane.add(label_3);
-		
 		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 111, 957, 21);
 		contentPane.add(separator);
-		
-		JLabel label_4 = new JLabel("");
-		contentPane.add(label_4);
-		
-		JLabel label_5 = new JLabel("");
-		contentPane.add(label_5);
 		setVisible(true);
 		
 		

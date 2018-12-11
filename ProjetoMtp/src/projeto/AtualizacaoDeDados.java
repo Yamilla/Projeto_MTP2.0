@@ -13,6 +13,8 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 import java.awt.Toolkit;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AtualizacaoDeDados extends JFrame {
 
@@ -63,7 +65,22 @@ public class AtualizacaoDeDados extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnAtualizar = new JButton("Atualizar ");
-		btnAtualizar.setBackground(new Color(0, 0, 0));
+		btnAtualizar.addActionListener(new ActionListener() {
+			//tratamento do botao atualizar                                  // TERMINAR ISSO AQUI TAVA COM PROBLEMAS
+			public void actionPerformed(ActionEvent arg0) {
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+
+									} catch (Exception e) {
+										e.printStackTrace();
+									}
+									dispose ();
+									}
+							});
+					}
+		});
+		btnAtualizar.setBackground(Color.LIGHT_GRAY);
 		btnAtualizar.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		btnAtualizar.setBounds(129, 224, 89, 23);
 		contentPane.add(btnAtualizar);
