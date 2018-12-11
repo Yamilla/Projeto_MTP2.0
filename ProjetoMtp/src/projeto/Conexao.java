@@ -1,5 +1,8 @@
 package projeto;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,7 +16,7 @@ public class Conexao  {
 	private String url = "jdbc:postgresql://localhost:5433/comercio";
 	private String usuario = "postgres";
 	private String senha = "mylla";
-	public Connection conn;
+	public static Connection conn;
 	public Conexao () {
 		conectar();
 	}
@@ -79,38 +82,31 @@ public class Conexao  {
 	}
 	
 	//INSERIR PRODUTO
-	public Boolean inserirProduto(InserirProduto produto) {
-		
-		Boolean retorno = false;
-		String sql = "INSERT INTO exemplo (image) values (?)";
-		PreparedStatement pst = Conexao.getPreparedStatement(sql);
-		
+	public static void inserirProduto(String nome, String descricao,Float preco_custo, Float preco_venda, File foto) {		
 		try {
-			
-			pst.setBytes(1, produto.getImage());
-			retorno = pst.execute();
-			
-			
-			
-			
-		}catch(Exception ex) {
-			ex.printStackTrace();
+			FileInputStream file = new FileInputStream(foto);
+			//if(file!=null)JOptionPane.showMessageDialog(null   , "diferente null");
+            PreparedStatement st = conn.prepareStatement("INSERT INTO produto(nome, descricao, preco_custo, preco_venda, foto) VALUES (?, ?, ?, ?, ?);");
+            st.setString(1, nome);
+            st.setString(2, descricao);
+            st.setFloat(3, preco_custo);
+            st.setFloat(4, preco_venda);
+            st.setBinaryStream(5, file, (int) foto.length());
+            st.executeUpdate();
+            
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null , e , "Erro" , JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
-		return retorno;
+		catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        } catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	private static PreparedStatement getPreparedStatement(String sql) {
-		
-		return null;
-	}
-	
-	
 }
 
-	//
+	
 
 	

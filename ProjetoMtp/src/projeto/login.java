@@ -45,10 +45,6 @@ public class login extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
 	public login() {
 		setResizable(false);
 		setTitle("Login");
@@ -91,13 +87,15 @@ public class login extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 				Conexao conexao = new Conexao();
-				PreparedStatement st = conexao.conn.prepareStatement("SELECT * FROM pessoa WHERE email = ? AND senha = ?");
+				PreparedStatement st = conexao.conn.prepareStatement("SELECT idpessoa FROM pessoa WHERE email = ? AND senha = ?");
 					st.setString(1, textField.getText());
 					st.setString(2, new String (passwordField.getPassword()));
+					String senha1 = new String(passwordField.getPassword());
 					ResultSet rs = st.executeQuery();
 					while(rs.next()) {
-						if(rs.getString("email").equals(textField.getText())) {
-							if(rs.getString("senha").equals(new String (passwordField.getPassword()))) {
+						if(textField.getText().equals(textField.getText())) {
+							if(senha1.equals(new String (passwordField.getPassword()))) {
+								//passar O ID DO USUARIO PARA MOSTRAR NOME, BOTAO ADM ETC
 								new ListadeProdutos(rs.getInt(1)).setVisible(true);
 								dispose();
 							}
@@ -106,7 +104,7 @@ public class login extends JFrame {
 					rs.close();
 					st.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				dispose();

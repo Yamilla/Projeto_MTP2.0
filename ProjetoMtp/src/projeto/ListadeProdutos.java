@@ -8,7 +8,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollBar;
@@ -27,11 +32,15 @@ import javax.swing.border.LineBorder;
 import java.awt.Scrollbar;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import java.awt.Window;
+
 import javax.swing.JTextField;
 import java.awt.Window.Type;
 import javax.swing.UIManager;
+import javax.swing.JTextPane;
 
 public class ListadeProdutos extends JFrame {
+	
 
 	private JPanel contentPane;
 
@@ -41,6 +50,9 @@ public class ListadeProdutos extends JFrame {
 	}
 
 	public ListadeProdutos(int idpessoa) {
+		
+		ativarAdm(idpessoa);
+		
 		setType(Type.POPUP);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\eclipse-workspace\\ProjetoMtp\\src\\img\\010-star-trek.png"));
 		setResizable(false);
@@ -53,18 +65,18 @@ public class ListadeProdutos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("nome");
+		JLabel lblNewLabel = new JLabel("Nome do Usuario");
 		lblNewLabel.setBounds(91, 11, 99, 21);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("foto");
+		JLabel lblNewLabel_1 = new JLabel("Foto Perfil");
 		lblNewLabel_1.setBounds(10, 11, 71, 76);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Atualizar dados");
 		btnNewButton.addActionListener(new ActionListener() {
 		
-			// tratamento do botao atualizar dados
+			//Tratamento do botao atualizar dados
 			public void actionPerformed(ActionEvent arg0) {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
@@ -107,7 +119,7 @@ public class ListadeProdutos extends JFrame {
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\yamil\\eclipse-workspace\\ProjetoMtp\\src\\img\\shopping_basket.png"));
 		btnNewButton_1.setBackground(Color.WHITE);
-		btnNewButton_1.setBounds(850, 11, 99, 98);
+		btnNewButton_1.setBounds(858, 11, 91, 98);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnSair = new JButton("Sair");
@@ -118,11 +130,11 @@ public class ListadeProdutos extends JFrame {
 		btnSair.setForeground(Color.BLACK);
 		btnSair.setBackground(Color.WHITE);
 		btnSair.setFont(new Font("Times New Roman", Font.BOLD, 11));
-		btnSair.setBounds(101, 77, 89, 23);
+		btnSair.setBounds(91, 77, 106, 23);
 		contentPane.add(btnSair);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(10, 111, 957, 2);
+		separator.setBounds(20, 107, 957, 2);
 		contentPane.add(separator);
 		
 		JLabel lblProduto = new JLabel("produto 1");
@@ -245,8 +257,60 @@ public class ListadeProdutos extends JFrame {
 		btnNewButton_11.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton_11.setBounds(813, 550, 136, 23);
 		contentPane.add(btnNewButton_11);
-		setVisible(true);
 		
+		JButton btnCadastrarProd = new JButton("Cadastrar Produto");	
 		
-	}
+		btnCadastrarProd.setEnabled(false);
+		btnCadastrarProd.setBounds(220, 77, 133, 23);
+		contentPane.add(btnCadastrarProd);
+		
+		JButton btnNewButton_12 = new JButton("Gerenciar Produto");
+		btnNewButton_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+				Conexao conexao = new Conexao();
+				PreparedStatement st = conexao.conn.prepareStatement("SELECT administrador FROM pessoa WHERE idpessoa = ?");
+					ResultSet rs = st.executeQuery();
+					while(rs.next()) {
+					
+							new ListadeProdutos(rs.getInt(1)).setVisible(true);
+							dispose();
+							}
+					rs.close();
+					st.close();
+				}catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+			}
+			});
+		}
+	
+		//VALIDAR BOTÃO CASO O USUARIO FOR ADM		
+		public void ativarAdm (int idpessoa){
+				boolean administrador = false;
+				JButton btnCadastrarProd = null;
+				try {
+					PreparedStatement st = Conexao.conn.prepareStatement("SELECT administrador FROM pessoa WHERE idpessoa = ?");					
+					st.setInt(1, idpessoa);
+					ResultSet rs = st.executeQuery();
+					
+					if(rs.next()){
+						administrador = rs.getBoolean(1);						
+					}
+					
+					if (administrador) {
+						btnCadastrarProd.setVisible(true);
+					}
+					else {
+						btnCadastrarProd.setVisible(false);
+					}
+				}catch(Exception n){
+					JOptionPane.showMessageDialog(null,"");
+					
+				}
+		}
 }
+	
+		
+		
