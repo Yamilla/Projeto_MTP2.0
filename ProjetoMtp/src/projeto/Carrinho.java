@@ -38,7 +38,7 @@ public class Carrinho extends JFrame {
 	 * Create the frame.
 	 */
 	public Carrinho() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\Desktop\\040-golden-snitch.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\eclipse-workspace\\ProjetoMtp\\src\\img\\040-golden-snitch.png"));
 		setTitle("Carrinho");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 545, 300);
@@ -68,7 +68,7 @@ public class Carrinho extends JFrame {
 			}
 		});
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
-		btnNewButton.setBounds(377, 227, 109, 23);
+		btnNewButton.setBounds(377, 227, 131, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Retornar a lista de produto");
@@ -77,7 +77,7 @@ public class Carrinho extends JFrame {
 								}
 		});
 		btnNewButton_1.setHorizontalAlignment(SwingConstants.LEFT);
-		btnNewButton_1.setBounds(10, 227, 163, 23);
+		btnNewButton_1.setBounds(10, 227, 185, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNome = new JLabel("Nome");

@@ -12,6 +12,8 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import java.awt.Toolkit;
+import java.awt.Window.Type;
 
 public class CompraFinalizada extends JFrame {
 
@@ -37,6 +39,8 @@ public class CompraFinalizada extends JFrame {
 	 * Create the frame.
 	 */
 	public CompraFinalizada() {
+		setType(Type.POPUP);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\eclipse-workspace\\ProjetoMtp\\src\\img\\060-assassins-creed.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 365);
 		contentPane = new JPanel();
@@ -53,5 +57,9 @@ public class CompraFinalizada extends JFrame {
 		lblNewLabel.setFont(new Font("Yu Gothic Medium", Font.BOLD, 19));
 		lblNewLabel.setBounds(10, 11, 414, 44);
 		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setBounds(167, 257, 65, 44);
+		contentPane.add(btnNewButton);
 	}
 }

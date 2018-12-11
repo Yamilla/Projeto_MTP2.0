@@ -86,7 +86,7 @@ public class CadastramentoDeProduto extends JFrame {
 		contentPane.add(lblDescrio);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(88, 39, 349, 20);
+		textField_1.setBounds(66, 42, 349, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
@@ -95,7 +95,7 @@ public class CadastramentoDeProduto extends JFrame {
 		contentPane.add(lblPreo);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(88, 70, 104, 20);
+		textField_2.setBounds(66, 73, 86, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -163,13 +163,13 @@ public class CadastramentoDeProduto extends JFrame {
 			}
 		});
 	
-		btnBuscarFoto.setBounds(149, 461, 153, 23);
+		btnBuscarFoto.setBounds(10, 465, 153, 23);
 		contentPane.add(btnBuscarFoto);
 		
 		JLabel label = new JLabel("");
 		label.setToolTipText("");
 		label.setBackground(SystemColor.controlDkShadow);
-		label.setBounds(457, 356, -425, -225);
+		label.setBounds(477, 414, -470, -322);
 		contentPane.add(label);
 		
 		JButton btnGravarNoBd = new JButton("Gravar no BD");
@@ -180,7 +180,7 @@ public class CadastramentoDeProduto extends JFrame {
 			try {
 				InserirProduto prod = new InserirProduto();
 				byte[] d;
-				prod.setImage(ManipularImagem.getImBytes(d));
+				//prod.setImage(ManipularImagem.getImBytes(d));
 				Conexao conn = new Conexao();
 				Boolean foi = conn.inserirProduto(prod);
 				if(foi) {
@@ -198,7 +198,7 @@ public class CadastramentoDeProduto extends JFrame {
 				
 			}
 		});
-		btnGravarNoBd.setBounds(149, 421, 153, 23);
+		btnGravarNoBd.setBounds(293, 465, 153, 23);
 		contentPane.add(btnGravarNoBd);
 		}
 	

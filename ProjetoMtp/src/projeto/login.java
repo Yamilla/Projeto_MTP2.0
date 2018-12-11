@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
+import javax.swing.JSeparator;
 
 public class login extends JFrame {
 
@@ -131,5 +132,9 @@ public class login extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\yamil\\Desktop\\Imagens Projeto MTP\\images.png"));
 		lblNewLabel.setBounds(76, 24, 227, 232);
 		contentPane.add(lblNewLabel);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 254, 361, 2);
+		contentPane.add(separator);
 	}
 }
