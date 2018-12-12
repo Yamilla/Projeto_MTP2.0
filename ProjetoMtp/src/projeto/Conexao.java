@@ -60,18 +60,25 @@ public class Conexao  {
 			e.printStackTrace();
 		}
 	}
-	public void atualizar() {
+	public void atualizar(int idpessoa,String nome,String endereco, String cidade , String uf,String senha) {
 		try {
-			PreparedStatement st = this.conn.prepareStatement("UPDATE pessoa SET nome = ?");
-			st.setString(1, "Thiago 2");
-			st.executeUpdate();
-			st.close();
+			PreparedStatement d = this.conn.prepareStatement("UPDATE pessoa SET nome = ? ,endereco = ?,cidade = ?,uf = ?,senha =?  WHERE idpessoa = ? ");
+			d.setString(1, nome);
+			d.setString(2,endereco);
+			d.setString(3,cidade);
+			d.setString(4,uf);
+			d.setString(5,senha);	
+			d.setInt(6, idpessoa);
+			d.executeUpdate();
+			d.close();
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null , e , "Erro" , JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 	}
-	public void excluir() {
-		try {
+	
+	/*public void excluir() {
+		try {qc
 			PreparedStatement st = this.conn.prepareStatement("DELETE FROM pessoa WHERE id = ?");
 			st.setInt(1, 1);
 			st.executeUpdate();
@@ -79,7 +86,7 @@ public class Conexao  {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	//INSERIR PRODUTO
 	public static void inserirProduto(String nome, String descricao,Float preco_custo, Float preco_venda, File foto) {		

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -33,7 +34,7 @@ public class AtualizacaoDeDados extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AtualizacaoDeDados frame = new AtualizacaoDeDados();
+					AtualizacaoDeDados frame = null; //VERIFICAR ESSE NULL
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,8 +45,9 @@ public class AtualizacaoDeDados extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @return 
 	 */
-	public AtualizacaoDeDados() {
+	public  AtualizacaoDeDados(int idpessoa) {
 		setType(Type.POPUP);
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\yamil\\eclipse-workspace\\ProjetoMtp\\src\\img\\036-jedi.png"));
@@ -68,18 +70,33 @@ public class AtualizacaoDeDados extends JFrame {
 		
 		JButton btnAtualizar = new JButton("Atualizar ");
 		btnAtualizar.addActionListener(new ActionListener() {
-			//tratamento do botao atualizar                                  // TERMINAR ISSO AQUI TAVA COM PROBLEMAS
+			//Tratamento do botao atualizar                                  
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if(arg0.getSource()==btnAtualizar){					
+					
+					if(verificaNulo2()==false) {
+						JOptionPane.showMessageDialog(null, "Algum campo não foi preenchido", "Aviso", JOptionPane.ERROR_MESSAGE);
+					}else {
+						
+					// ATUALIZAÇÃO DE DADOS
+					Conexao conexao = new Conexao();
+					conexao.atualizar(idpessoa, textField.getText(),textField_2.getText(),textField_1.getText(),textField_3.getText(),new String(passwordField.getPassword()));			
+								
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
-
-									} catch (Exception e) {
-										e.printStackTrace();
-									}
-									dispose ();
-									}
-							});
+								ListadeProdutos frame = new ListadeProdutos(idpessoa);
+								frame.setVisible(true);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+					dispose(); 
+					
+						}
+					}
 					}
 		});
 		btnAtualizar.setBackground(Color.LIGHT_GRAY);
@@ -132,4 +149,13 @@ public class AtualizacaoDeDados extends JFrame {
 		btnCancelar.setBounds(210, 233, 89, 23);
 		contentPane.add(btnCancelar);
 	}
+	//VERIFICAÇÃO DE NULOS
+			public boolean verificaNulo2(){
+				boolean t = true;
+				//verificar multiplos espaços
+				if(textField.getText().trim().isEmpty()||textField_2.getText().trim().isEmpty()||textField_1.getText().trim().isEmpty()||textField_3.getText().trim().isEmpty()||new String(passwordField.getPassword()).trim().isEmpty()){
+					t = false;
+					}
+				return t;
+			}
 }

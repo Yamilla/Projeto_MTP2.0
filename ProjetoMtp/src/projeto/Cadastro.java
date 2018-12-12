@@ -104,9 +104,6 @@ public class Cadastro extends JFrame {
 				
 				//VERIFICAÇÃO DE NULOS
 				if(arg0.getSource()==btnCadastrar){
-				/*	if(textField_2.getText().equals("") ||textField_2.getText().equals(" ")) {
-						JOptionPane.showMessageDialog(null, "Titulo da Janela", "Erro no inserir", JOptionPane.ERROR_MESSAGE);
-					}else {*/
 				
 				if(verificaNulo()==false) {
 					JOptionPane.showMessageDialog(null, "Algum campo não foi preenchido", "Aviso", JOptionPane.ERROR_MESSAGE);
