@@ -2,6 +2,7 @@ package projeto;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GraphicsConfiguration;
 import java.awt.Image;
 
 import javax.swing.JFrame;
@@ -43,9 +44,7 @@ public class CadastramentoDeProduto extends JFrame {
 	private JButton btnBuscarFoto;
 	private JTextField textField_3;
 	private File foto;
-	/**
-	 *Lançamento da aplicação
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -109,20 +108,25 @@ public class CadastramentoDeProduto extends JFrame {
 				JLabel label = new JLabel("");
 				label.setBounds(71, 101, 349, 231);
 				contentPane.add(label);
-				//VERIFICAR SE ESSE IF É NECESSÁRIO
+				
 				if(ev2.getSource()==btnBuscarFoto) {
 					try {					
 						JFileChooser file = new JFileChooser();
 						file.setCurrentDirectory(new File("/produtos")); 
 						file.setDialogTitle("Imagem do Produto");
-						file.showOpenDialog(label );
+						file.showOpenDialog(label);
 						if(file.getSelectedFile()!=null)
 						foto = file.getSelectedFile();
+						
+						
+				
 						else {
 							JOptionPane.showMessageDialog(null," ");
 						}
+						
 						label.setIcon(new ImageIcon(file.getSelectedFile().getPath()));
-						//label.setText(file.getSelectedFile().getPath());
+						
+						label.setIcon(new ImageIcon());
 						
 					}catch(Exception e) {
 							label.setIcon(new ImageIcon("C:\\Desktop\\Imagens Projeto MTP\\produtos\\camiseta.jpg"));
@@ -138,7 +142,7 @@ public class CadastramentoDeProduto extends JFrame {
 		label.setIcon(new ImageIcon("C:\\Users\\yamil\\Desktop\\Imagens Projeto MTP\\download.png"));
 		label.setToolTipText("");
 		label.setBackground(SystemColor.controlDkShadow);
-		label.setBounds(379, 401, -252, -156);
+		label.setBounds(339, 401, -192, -134);
 		contentPane.add(label);
 		
 		JButton btnGravarNoBd = new JButton("Cadastrar");
@@ -155,9 +159,14 @@ public class CadastramentoDeProduto extends JFrame {
 					ex.printStackTrace();
 					}
 					dispose();
+					
 				}
 			}
 		});
+		
+		
+		
+		
 		btnGravarNoBd.setBounds(293, 465, 153, 23);
 		contentPane.add(btnGravarNoBd);
 		

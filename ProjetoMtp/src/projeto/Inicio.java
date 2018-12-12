@@ -43,8 +43,8 @@ public class Inicio extends JFrame implements ActionListener {
 		});		
 	}
 	
-	JButton btnNewButton = new JButton("Cadastrar");
-	JButton btnNewButton_1 = new JButton("Login");
+	JButton btncadastrar = new JButton("Cadastrar");
+	JButton btnlogin = new JButton("Login");
 	public Inicio() {
 		setBackground(Color.DARK_GRAY);
 		setForeground(new Color(0, 0, 51));
@@ -60,38 +60,38 @@ public class Inicio extends JFrame implements ActionListener {
 		contentPane.setBackground(new Color(0, 0, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBounds(154, 366, 109, 38);
+		btncadastrar.setBackground(Color.WHITE);
+		btncadastrar.setForeground(Color.BLACK);
+		btncadastrar.setBounds(154, 366, 109, 38);
 		
 		
-		btnNewButton.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
-		btnNewButton.addActionListener(new ActionListener() {
+		btncadastrar.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
+		btncadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		contentPane.setLayout(null);
-		contentPane.add(btnNewButton);
+		contentPane.add(btncadastrar);
 		
-		btnNewButton.addActionListener(this) ;
-		btnNewButton_1.setBackground(Color.WHITE);
-		btnNewButton_1.setBounds(414, 366, 89, 38);
-		btnNewButton_1.addActionListener(this) ;
+		btncadastrar.addActionListener(this) ;
+		btnlogin.setBackground(Color.WHITE);
+		btnlogin.setBounds(414, 366, 89, 38);
+		btnlogin.addActionListener(this) ;
 			
 		
 		
-		btnNewButton_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
-		contentPane.add(btnNewButton_1);
+		btnlogin.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
+		contentPane.add(btnlogin);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\yamil\\Desktop\\Imagens Projeto MTP\\GEEK-LOGO.jpg"));
 		lblNewLabel_1.setBounds(0, 0, 632, 415);
 		contentPane.add(lblNewLabel_1);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, btnNewButton, btnNewButton_1, lblNewLabel_1}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, btncadastrar, btnlogin, lblNewLabel_1}));
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if(arg0.getSource()==btnNewButton) {
+		if(arg0.getSource()==btncadastrar) {
 			
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
@@ -101,11 +101,12 @@ public class Inicio extends JFrame implements ActionListener {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+					
 				}
 			});
 			}
 		
-		if(arg0.getSource()==btnNewButton_1) {
+		if(arg0.getSource()==btnlogin) {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
@@ -115,9 +116,10 @@ public class Inicio extends JFrame implements ActionListener {
 						e.printStackTrace();
 					}
 				}
+				
 			});		
 			
-		}
+		}dispose();
 	
 	}
 }

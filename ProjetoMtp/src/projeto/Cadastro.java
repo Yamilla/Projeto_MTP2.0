@@ -94,7 +94,7 @@ public class Cadastro extends JFrame {
 		lblSenha.setBounds(10, 124, 46, 14);
 		contentPane.add(lblSenha);
 		
-		
+
 		
 		
 		//TRATAMENTO DO BOTÃO CADASTRAR
@@ -106,7 +106,7 @@ public class Cadastro extends JFrame {
 				if(arg0.getSource()==btnCadastrar){
 				
 				if(verificaNulo()==false) {
-					JOptionPane.showMessageDialog(null, "Algum campo não foi preenchido", "Aviso", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Por favor! Preencha os campos para efetuar o cadastro", "Aviso", JOptionPane.ERROR_MESSAGE);
 				}else {
 					
 				// CADASTRO DE NULO
@@ -138,10 +138,9 @@ public class Cadastro extends JFrame {
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//abrir a tela de inicio colocar if
+			public void actionPerformed(ActionEvent arg0) {				
 				dispose();
-				new Inicio();
+				new Inicio().setVisible(true);
 			}
 		});
 		btnCancelar.setFont(new Font("Times New Roman", Font.BOLD, 12));
@@ -149,25 +148,25 @@ public class Cadastro extends JFrame {
 		contentPane.add(btnCancelar);
 		
 		setTextField_1(new JTextField());
-		getTextField_1().setBounds(58, 25, 366, 20);
+		getTextField_1().setBounds(74, 25, 350, 20);
 		contentPane.add(getTextField_1());
 		getTextField_1().setColumns(10);
 		
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		textField_2.setBounds(58, 70, 366, 20);
+		textField_2.setBounds(74, 70, 350, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
 		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		textField_3.setBounds(60, 214, 274, 20);
+		textField_3.setBounds(74, 214, 260, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		passwordField.setBounds(58, 121, 366, 20);
+		passwordField.setBounds(74, 121, 350, 20);
 		contentPane.add(passwordField);
 		
 		JLabel lblEstado = new JLabel("UF");
@@ -183,12 +182,12 @@ public class Cadastro extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Endere\u00E7o");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblNewLabel_1.setBounds(10, 172, 46, 14);
+		lblNewLabel_1.setBounds(10, 172, 54, 20);
 		contentPane.add(lblNewLabel_1);
 		
 		textField_4 = new JTextField();
 		textField_4.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		textField_4.setBounds(58, 172, 366, 20);
+		textField_4.setBounds(74, 172, 350, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNome, lblEmail, lblNewLabel, lblSenha, btnCadastrar, btnCancelar, textField_1, textField_2, textField_3}));

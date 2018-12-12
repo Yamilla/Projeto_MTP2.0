@@ -86,6 +86,7 @@ public class login extends JFrame {
 		//VALIDAÇÃO DO USUÁRIO
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+	
 				Conexao conexao = new Conexao();
 				PreparedStatement st = conexao.conn.prepareStatement("SELECT idpessoa FROM pessoa WHERE email = ? AND senha = ?");
 					st.setString(1, textField.getText());
@@ -98,27 +99,31 @@ public class login extends JFrame {
 								//passar O ID DO USUARIO PARA MOSTRAR NOME, BOTAO ADM ETC
 								new ListadeProdutos(rs.getInt(1)).setVisible(true);
 								dispose();
+							}else {
+								JOptionPane.showMessageDialog(null, "SENHA INCORRETA");
 							}
+						}else {
+							JOptionPane.showMessageDialog(null, "EMAIL INCORRETO");
 						}
 					}
 					rs.close();
 					st.close();
-				} catch (SQLException e) {
+				}catch (SQLException e) {
 					
 					e.printStackTrace();
 				}
-				dispose();
-			}
-			
-		});
+				//dispose();
+				}
+			});
 		btnNewButton.setBounds(71, 385, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Sair");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {			// Tramento do botao sair 
 				if(arg0.getSource()==btnNewButton_1) {
+					new Inicio().setVisible(true);
 					dispose();
 				}
 			}

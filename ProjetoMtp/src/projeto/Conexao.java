@@ -112,6 +112,27 @@ public class Conexao  {
 			e.printStackTrace();
 		}
 	}
+	
+	// INSERIR PRODUTO NO CARRINHO
+	public static void inserirNoCarrinho(int idproduto , int idpessoa , int qntd) {		
+		try {
+			
+            PreparedStatement st = conn.prepareStatement("INSERT INTO carrinho (idproduto,idpessoa,quantidade) VALUES (?, ?, ?)");
+            st.setInt(1, idproduto);
+            st.setInt(2, idpessoa);          
+            st.setFloat(3, qntd);
+
+            st.executeUpdate();
+            
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null , e , "Erro" , JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+		catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+	
+	}
 }
 
 	

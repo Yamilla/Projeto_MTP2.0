@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
+import javax.swing.SwingConstants;
 
 public class AtualizacaoDeDados extends JFrame {
 
@@ -61,48 +62,9 @@ public class AtualizacaoDeDados extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nome");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 11));
 		lblNewLabel.setBounds(10, 22, 46, 14);
 		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(10, 74, 46, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		JButton btnAtualizar = new JButton("Atualizar ");
-		btnAtualizar.addActionListener(new ActionListener() {
-			//Tratamento do botao atualizar                                  
-			public void actionPerformed(ActionEvent arg0) {
-				
-				if(arg0.getSource()==btnAtualizar){					
-					
-					if(verificaNulo2()==false) {
-						JOptionPane.showMessageDialog(null, "Algum campo não foi preenchido", "Aviso", JOptionPane.ERROR_MESSAGE);
-					}else {
-						
-					// ATUALIZAÇÃO DE DADOS
-					Conexao conexao = new Conexao();
-					conexao.atualizar(idpessoa, textField.getText(),textField_2.getText(),textField_1.getText(),textField_3.getText(),new String(passwordField.getPassword()));			
-								
-					EventQueue.invokeLater(new Runnable() {
-						public void run() {
-							try {
-								ListadeProdutos frame = new ListadeProdutos(idpessoa);
-								frame.setVisible(true);
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-					});
-					dispose(); 
-					
-						}
-					}
-					}
-		});
-		btnAtualizar.setBackground(Color.LIGHT_GRAY);
-		btnAtualizar.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		btnAtualizar.setBounds(30, 233, 89, 23);
-		contentPane.add(btnAtualizar);
 		
 		textField = new JTextField();
 		textField.setBounds(66, 19, 254, 20);
@@ -110,6 +72,7 @@ public class AtualizacaoDeDados extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lblCidade = new JLabel("Cidade");
+		lblCidade.setFont(new Font("Times New Roman", Font.BOLD, 11));
 		lblCidade.setBounds(10, 116, 46, 14);
 		contentPane.add(lblCidade);
 		
@@ -117,10 +80,6 @@ public class AtualizacaoDeDados extends JFrame {
 		textField_1.setBounds(66, 113, 173, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-		
-		JLabel lblNewLabel_2 = new JLabel("Endere\u00E7o");
-		lblNewLabel_2.setBounds(10, 74, 46, 14);
-		contentPane.add(lblNewLabel_2);
 		
 		textField_2 = new JTextField();
 		textField_2.setBounds(66, 68, 254, 20);
@@ -133,10 +92,12 @@ public class AtualizacaoDeDados extends JFrame {
 		contentPane.add(textField_3);
 		
 		JLabel lblUf = new JLabel("UF");
+		lblUf.setFont(new Font("Times New Roman", Font.BOLD, 11));
 		lblUf.setBounds(249, 116, 26, 14);
 		contentPane.add(lblUf);
 		
 		JLabel lblNewLabel_3 = new JLabel("Senha");
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 11));
 		lblNewLabel_3.setBounds(10, 173, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
@@ -145,9 +106,29 @@ public class AtualizacaoDeDados extends JFrame {
 		contentPane.add(passwordField);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {					//Tramento do botao "Cancelar"
+				dispose();
+				new ListadeProdutos(idpessoa).setVisible(true);
+			}
+		});
 		btnCancelar.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		btnCancelar.setBounds(210, 233, 89, 23);
 		contentPane.add(btnCancelar);
+		
+		JLabel lblNewLabel_1 = new JLabel("Endere\u00E7o");
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 11));
+		lblNewLabel_1.setBounds(10, 71, 68, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {					
+				
+			}
+		});
+		btnAtualizar.setBounds(10, 233, 89, 23);
+		contentPane.add(btnAtualizar);
 	}
 	//VERIFICAÇÃO DE NULOS
 			public boolean verificaNulo2(){

@@ -80,9 +80,12 @@ public class Carrinho extends JFrame {
 		btnNewButton_1.setBounds(10, 227, 185, 23);
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(20, 24, 94, 86);
-		contentPane.add(lblNome);
+		JLabel NomeProd = new JLabel("FOTO");
+		NomeProd.setBounds(20, 24, 94, 86);
+		contentPane.add(NomeProd);
+		
+		JLabel lblNewLabel = new JLabel("Pre\u00E7o:");
+		lblNewLabel.setBounds(20, 136, 94, 30);
+		contentPane.add(lblNewLabel);
 	}
-
 }
